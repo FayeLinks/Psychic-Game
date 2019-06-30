@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Mali&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assests/css/style.css">
+
+    <title>Psychic Game</title>
 
 
 </head>
 <body>
     <h1>The Psychic Game</h1>
+    <br>
 
     <!-- Create a div element to store the variable inputs -->
     <div id= "game">
-        <p id="directions-text">Guess what letter I'm thinking of!</p>
+        <p id="directions-text">Guess what letter Professor X is thinking of!</p>
         <p id="wins-text">Wins: <span> 0</span></p>
         <p id="losses-text">Losses: <span> 0</span></p>
         <p id="guessesleft-text">Guesses left: <span> 9</span></p>
@@ -21,90 +29,12 @@
         <p id="computerchoice-text"></p>
         
     </div>
+    <br>
+<!-- Image of Xavier -->
 
-    <script type="text/javascript">
+    <img src="https://static3.srcdn.com/wordpress/wp-content/uploads/charles-xavier1.jpg" class="img-fluid" alt="Responsive image">
 
-
-        // Create variables for keeping the score, originally should be set to 0
-    
-    
-    var wins = 0;
-    var losses = 0;
-    var guesses = 9;
-    var guessesLeft = 9;
-    var guessList = " ";
-    
-    
-        // Create an array for all the options below
-        var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    
-    // Function will be called when we reset everything and THIS PART STILL NEEDS WORK. THE SECOND RESET DOESN'T ACCEPT THE CORRECT LETTER AFTER THE RESET
-    
-        function reset() {
-            console.log("Game Over");
-            computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-            console.log(computerGuess);
-            guessesLeft = 9;
-            guessList = " ";
-        }
-    
-    // create the variables that hold references to the HTML display above
-    
-        var directionText = document.getElementById("directions-text");
-        var userChoiceText = document.getElementById("userchoice-text");
-        var winsText = document.getElementById("wins-text");
-        var lossesText = document.getElementById("losses-text");
-        var guessesLeftText = document.getElementById("guessesleft-text");
-        var computerChoiceText = document.getElementById("computerchoice-text");
-    
-        // Computer will randomly choose a choice from the option array above.
-        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-       console.log(computerGuess);
-    
-    // Create the function below when a key is pressed
-        document.onkeyup = function(event) {
-            
-    // Determines which key was pressed by the person
-    
-       var userGuess = event.key; 
-       guessList = guessList + " " + userGuess;
-       console.log(guessList);
-    
-    
-    // The below code block says to only run the code if the user presses the keys allowed in the array
-        if (userGuess === computerGuess)  {
-            console.log("win");
-            wins = wins +1; 
-            reset();
-        }
-        else {
-            console.log("lose");
-            guessesLeft = guessesLeft -1;
-            console.log("guesses left " + guessesLeft);
-            if (guessesLeft === 0) {
-                losses = losses +1;
-                reset();
-            }
-        }
-    
-    // I need to reset the certain numbers once the condition is met that the guesses left === 0
-    
-        
-    
-    // I think I need to create the function above in the objects so they can reference that function for the if^^^
-     
-    
-    // Display the user and computer guesses, wins/losses/ties
-        userChoiceText.textContent = "You chose: " + guessList;
-        winsText.textContent = "Wins: " + wins;
-        lossesText.textContent = "Losses: " + losses;
-        guessesLeftText.textContent = "Guesses left: " + guessesLeft;
-        };
-    
-    
-    </script>
-
-    <script src='assests/javascript/game.js'></script>
+    <script src="assests/javascript/game.js"></script>
 
 </body>
 </html>
